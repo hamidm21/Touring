@@ -1,0 +1,7 @@
+export enum RestError {
+    ALLREADY_EXISTS = 1006,
+    NOT_VALIDATED = 1007,
+    NOT_FOUND = 1008,
+    WRONG_PASSWORD = 1009,
+    WRONG_CODE = 1010,
+}

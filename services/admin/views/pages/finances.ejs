@@ -1,0 +1,143 @@
+<body>
+    <!-- Sidenav -->
+    <% include ../partials/sidebar %>
+    <!-- Main content -->
+    <div class="main-content">
+      <!-- Top navbar -->
+      <%- include('../partials/navbar', {fullName: nav.fullName}) %>
+      <!-- Header -->
+      <%- include('../partials/header', {header: header}) %>
+      <!-- Page content -->
+      <div class="container-fluid mt--7">
+        <!-- Table -->
+        <div class="row" style="display: block;">
+          <div class="col" style="direction: rtl;">
+            <div class="card shadow">
+              <div class="card-header bg-transparent" style="display: flex; direction: ltr; justify-content: space-between;">
+                  <div class="d-flex justify-content-between">
+                      <a href="/finances/request" class="btn btn-sm btn-success mr-4" style="display: flex; align-items: center;">
+                          <i class="ni ni-fat-add" style="padding: 2px; font-size: large;"></i>
+                          ثبت درخواست تسویه
+                      </a>
+                  </div>
+                <h3 class="mb-0" style="display: flex;">پرداخت ها</h3>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">نام کامل</th>
+                        <th scope="col">شماره تماس</th>
+                        <th scope="col">تعداد رزرو</th>
+                        <th scope="col">مبلغ پرداخت شده</th>
+                        <th scope="col">نام سفر</th>
+                        <th scope="col"> اعمال</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(var i = 0; i < list.pays.length; i++) { %>
+                      <% if (list.pays[i].type === "credit") {%>
+                        <tr>
+                          <th scope="row">
+                            <div class="media align-items-center">
+                              <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="خرید کاربر">
+                                <img alt="Image placeholder" src="/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                              </a>
+                              <div class="media-body">
+                                <span class="mb-0 text-sm"> <%= list.pays[i].trip.registers[0].fullName%> </span>
+                              </div>
+                            </div>
+                          </th>
+                          <td>
+                              <%= list.pays[i].trip.registers[0].phoneNumber%>
+                          </td>
+                          <td>
+                              <%= list.pays[i].payment.registeredCount%>
+                          </td>
+                          <td>
+                              <p class="mt-3 mb-0">
+                                  <span class="text-success mr-2">
+                                    <i class="fa fa-arrow-up"></i>
+                                    <%= list.pays[i].amount%> تومان                                 
+                                  </span>
+                              </p>
+                          </td>
+                          <td>
+                              <%= list.pays[i].trip.title%>                            
+                          </td>
+                          <td class="text-left">
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <!-- <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a> -->
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      <% } else { %>
+                        <tr>
+                          <th scope="row">
+                            <div class="media align-items-center">
+                              <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="تسویه حساب لیدر">
+                                <img alt="Image placeholder" src="/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                              </a>
+                              <div class="media-body">
+                                <span class="mb-0 text-sm"> <%= list.pays[i].user.fullName%> </span>
+                              </div>
+                            </div>
+                          </th>
+                          <td>
+                              <%= list.pays[i].user.phoneNumber%>
+                          </td>
+                          <td>
+                              نامشخص
+                          </td>
+                          <td>
+                              <p class="mt-3 mb-0">
+                                  <span class="text-danger mr-2">
+                                    <i class="fa fa-arrow-down"></i>
+                                    <%= list.pays[i].tourAmount%> تومان                                  
+                                  </span>
+                              </p>
+                          </td>
+                          <td>
+                             نامشخص                           
+                          </td>
+                          <td class="text-left">
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; justify-content: center; align-items: center;">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <!-- <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a> -->
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      <% } %>
+                      <% } %>
+                    </tbody>
+                  </table>
+                  <div class="card-footer py-4">
+                    <%- include('../partials/pagination', {page: list.page, pages: list.pages}); %>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <% include ../partials/footer %>
+      </div>
+    </div>
+  
+    <!-- Include scripts -->
+    <% include ../partials/scripts %>
+  </body>
+  

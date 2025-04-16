@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="38" viewBox="0 0 110 38">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: #17c69b;
+      }
+
+      .cls-2 {
+        font-size: 25px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: Kartika;
+      }
+
+      .cls-3 {
+        font-size: 26px;
+      }
+    </style>
+  </defs>
+  <g id="logo" transform="translate(-209 -156)">
+    <path id="Path_5875" data-name="Path 5875" class="cls-1" d="M58.145,19.041a5.693,5.693,0,0,1,8.021.038,6.2,6.2,0,0,1,1.74,4.042v5.693H62.212a6.206,6.206,0,0,1-4.023-1.733,5.693,5.693,0,0,1,0-8.027M56.07,16.941a8.552,8.552,0,0,0,.044,12.019,9.115,9.115,0,0,0,5.971,2.587h8.565V22.988a9.122,9.122,0,0,0-2.581-6.016,8.546,8.546,0,0,0-12.019-.044Z" transform="translate(173.671 150.992)"/>
+    <ellipse id="Ellipse_17" data-name="Ellipse 17" class="cls-1" cx="3.068" cy="3.068" rx="3.068" ry="3.068" transform="translate(232.714 170.932)"/>
+    <text id="L" class="cls-2" transform="translate(209 182)"><tspan x="0" y="0">L</tspan></text>
+    <text id="sTour" class="cls-3" transform="translate(250 182)"><tspan x="0" y="0">sTour</tspan></text>
+  </g>
+</svg>

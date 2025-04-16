@@ -1,0 +1,258 @@
+<body>
+        <!-- Sidenav -->
+        <% include ../partials/sidebar %>
+        <!-- Main content -->
+        <div class="main-content">
+          <!-- Top navbar -->
+          <%- include('../partials/navbar', {fullName: nav.fullName}); %>
+          <!-- Header -->
+          <% include ../partials/header %>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <!-- Table -->
+            <div class="row">
+              <div class="col" style="direction: rtl;">
+                <div class="card shadow">
+                  <div class="card-header bg-transparent">
+                    <h3 class="mb-0" style="display: flex;">ویرایش سفر</h3>
+                  </div>
+                  <div class="card-body" style="direction: rtl;">
+                        <form id="form" action="" method="POST" enctype="multipart/form-data">
+                            <div id="quill-wrapper" style="direction: ltr; margin-bottom: 15px;">
+                                <div id="full-toolbar" style="border-top-left-radius: 5px; border-top-right-radius: 5px;">
+                                    <span class="ql-formats">
+                                    <select class="ql-size"></select>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-header" value="1"></button>
+                                    <button class="ql-header" value="2"></button>
+                                    <button class="ql-blockquote"></button>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-list" value="ordered"></button>
+                                    <button class="ql-list" value="bullet"></button>
+                                    <button class="ql-indent" value="-1"></button>
+                                    <button class="ql-indent" value="+1"></button>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-direction" value="rtl"></button>
+                                    <select class="ql-align"></select>
+                                    </span>
+                                    <span class="ql-formats">
+                                    <button class="ql-link"></button>
+                                    <button class="ql-image"></button>
+                                    <button class="ql-video"></button>
+                                    </span>
+                                </div>
+                                <!-- Create the editor container -->
+                                <div id="full-editor" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+                                    <%- trip.text %>
+                                </div>
+                            </div>
+                            <input id="editorInput" type="hidden" name="text" value="<%= trip.text %>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <input type="text" required class="form-control" id="title" name="title" placeholder="اسم تور" value="<%= trip.title %>" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" required class="form-control" id="description" name="desc" placeholder="خلاصه توضیحات" value="<%= trip.description %>" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <input type="text" required class="form-control" id="origin" name="origin" placeholder="مبدا" value="<%= trip.origin %>" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" required class="form-control" id="destination" name="dest" placeholder="مقصد" value="<%= trip.destination %>" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                        <input type="text" class="form-control" id="price" name="price" placeholder="قیمت به تومان" value="<%= trip.price %>">
+                                        <small id="priceLabel" style="width: 100%; display: flex; margin-top: 2px;"> 0 تومان </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="display: flex; align-items: center;">
+                                        <div class="form-group" style="display: flex;">
+                                            <small style="padding-left: 10px;">
+                                                سفر مجانی 
+                                            </small>
+                                            <label class="custom-toggle">
+                                            <input type="checkbox" id="free" name="free">
+                                            <span class="custom-toggle-slider rounded-circle"></span>
+                                        </div>
+                                    </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" required class="form-control" id="capacity" name="capacity" placeholder="ظرفیت" value="<%= trip.capacity %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <input type="text" required class="form-control" id="vehicle" name="vehicle" placeholder="وسیله نقلیه" value="<%= trip.dataTable.vehicle %>" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" required class="form-control" id="services" name="services" placeholder="خدمات تور" value="<%= trip.dataTable.services %>" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        <input type="text" required class="form-control" id="required" name="required" placeholder="لوازم ضروری"value="<%= trip.dataTable.required %>" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" required class="form-control" id="distance" name="distance" placeholder="مسافت" value="<%= trip.dataTable.distance %>" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form-control" style="width: 100%; display: flex;">زمان شروع سفر</label>
+                                                <input type="text" class="form-control" id="datepicker-start" name="openingDate" value="<%= trip.openingDate %>"  />
+                                                <input type="hidden" class="form-control" id="openAlt" name="openingTime"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form-control" style="width: 100%; display: flex;"> زمان اتمام سفر </label>
+                                                <input type="text" class="form-control" id="datepicker-end" name="closingDate" value="<%= trip.closingDate %>" />
+                                                <input type="hidden" class="form-control" id="closeAlt" name="closingTime"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row" style="padding-left:15px; padding-right: 15px;">
+                                            <small style="margin-bottom: 5px;">
+                                                اولین عکس به عنوان عکس اصلی نمایش داده میشود (اگر نمیخواهید عکس ها تغییر کنند هیج عکسی را آپلود نکنید)
+                                            </small>
+                                            <div class="form-group" style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                                                <span style="width: 180px; display: flex;">
+                                                    عکس ها را انتخاب کنید
+                                                </span>
+                                                <input type="file" name="images" class="form-control" style="padding: 0px; width: 100%;" multiple>
+                                        </div>
+                                    </div>
+                                <div class="row" style="margin-bottom: 10px; padding-left: 15px; padding-right: 15px;">
+                                    <textarea class="form-control" required id="exampleFormControlTextarea1" name="extra" rows="4" placeholder="توضیحات تکمیلی"></textarea></textarea>
+                                    <input type="hidden" value="<%= trip.dataTable.extra %>" id="extraInfo">
+                                </div>
+                                <button class="btn btn-icon btn-3 btn-primary btn-block" type="submit" >
+                                    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                                      <span  class="btn-inner--text">ثبت سفر</span>
+                                  </button>
+                              </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- Footer -->
+            <% include ../partials/footer %>
+          </div>
+        </div>
+        <script src="/js/prnum.js"></script>
+        <script>
+        document.getElementById("exampleFormControlTextarea1").value = document.getElementById("extraInfo").value;
+        </script>
+        <script>
+        document.getElementById("price").oninput(function() {
+            document.getElementById("price").value = convertPrToEn(document.getElementById("price").value)
+            document.getElementById("priceLabel").innerText = document.getElementById("price").value.toPersianLetter() + " تومان " ;
+        });
+        document.getElementById("price").addEventListener("keyup", function() {
+            document.getElementById("price").value = convertPrToEn(document.getElementById("price").value)
+            document.getElementById("priceLabel").innerText = document.getElementById("price").value.toPersianLetter() + " تومان " ;
+        });
+        </script>
+        <script>
+        document.getElementById("capacity").addEventListener("keyup", function() {
+            document.getElementById("capacity").value = convertPrToEn(document.getElementById("capacity").value)
+        });
+        </script>
+        <link rel="stylesheet" href="/css/persian-datepicker.css"/>
+        <script src="/vendor/jquery/dist/jquery.min.js"></script>
+        <!-- persian date JS -->
+        <script src="/js/persian-date.js" type="text/javascript"></script>
+        <script src="/js/persian-datepicker.js" type="text/javascript"></script>
+        <!-- quill JS -->
+        <script src="/js/quill.js"></script>
+        <script>
+            $(document).ready(function() {
+            var sd = $("#datepicker-start").persianDatepicker({
+                altField: "#openAlt",
+                timePicker: {
+                enabled: true,
+                meridiem: {
+                    enabled: true
+                },
+                autoClose: true
+            }});
+            // sd.setDate()
+            var ed = $("#datepicker-end").persianDatepicker({
+                altField: "#closeAlt",
+                timePicker: {
+                enabled: true,
+                meridiem: {
+                    enabled: true
+                },
+                autoClose: true
+            }});
+            });
+        </script>
+        <script>
+            // Initialize editor with custom theme and modules
+            var fullEditor = new Quill('#full-editor', {
+            modules: {
+                toolbar: {
+                    container: "#full-toolbar",
+                    handlers: {
+                        // handlers object will be merged with default handlers object
+                        "link": function(value) {
+                            console.log("started")
+                            if (value) {
+                                var href = prompt('Enter the URL');
+                                this.quill.format('link', href);
+                            } else {
+                                this.quill.format('link', false);
+                            }
+                        }
+                }},
+            },
+            theme: 'snow'
+            });
+            var form = document.getElementById("form");
+            form.onsubmit = function() {
+                console.log(fullEditor.getContents())
+                var text = document.getElementById("editorInput");
+                text.value = document.querySelector(".ql-editor").innerHTML;
+            }
+        </script>
+        <!-- Include scripts -->
+        <% include ../partials/scripts %>
+      </body>
+      

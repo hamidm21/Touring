@@ -1,0 +1,54 @@
+
+<div class="container mt-5">
+    <div class="container">
+        <div class=" row">
+            <div class=" ">
+                <h4 ><button class="bttn-gradient bttn-lg bttn-success"> سفر ها</button> </h4>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="container mt-3">
+        <div class=" row ">
+            <% trip.forEach(course => { %>
+            <div class="col-12 col-md-3  mt-5  ">
+                <div class="card shadow heightCart ">
+                    <a href="<%= `trip/${course.slug}`  %>">
+
+                        <img class="card-img-top cardHeight" src="<%= course.imgURL %>" alt="<%= course.title %>">
+                    </a>
+
+                    <div class="card-body ">
+                        <h6 class=" p-1"><a class="text-dark text-decoration-none" href="<%= `trip/${course.slug}`%>"><%= course.title %></a></h6>
+                        <p class=" card-text"><%- course.description.substr(0,55)%>...</p>
+
+
+                    </div>
+                    <div class="card-footer text-muted alert-secondary sidebar-heading">
+                        <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark "> <%= course.prOpeningDate %></button></span>    <span ><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.capacity %> نفر </button></span>
+                        <button class="bttn-pill bttn-xs bttn-primary">  <%= course.tourName %> </button>
+
+                        <hr>
+                        <!-- <span class=""><button class="bttn-minimal bttn-xs bttn-primary   text-dark"><%= course.leaderName %>  </button></span > -->
+                        <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.dataTable.origin.substr(0,18)%>... </button></span>    <span class=""><button class="bttn-pill bttn-xs bttn-success "> <%= course.price %>تومان </button></span>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="pt-5">
+</div>
+

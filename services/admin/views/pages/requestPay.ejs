@@ -1,0 +1,124 @@
+<body>
+        <!-- Sidenav -->
+        <% include ../partials/sidebar %>
+        <!-- Main content -->
+        <div class="main-content">
+          <!-- Top navbar -->
+          <%- include('../partials/navbar', {fullName: nav.fullName}); %>
+          <!-- Header -->
+          <% include ../partials/header %>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <!-- Table -->
+            <div class="row">
+              <div class="col" style="direction: rtl;">
+                <div class="card shadow">
+                  <div class="card-header bg-transparent">
+                    <h3 class="mb-0" style="display: flex;">ثبت درخواست تسویه</h3>
+                  </div>
+                  <div class="card-body" style="direction: rtl;">
+                    <form action="" method="POST">
+                        <div class="row" style="margin-bottom: 15px;">
+                            <div class="col-md-4" style="display: flex; justify-content: center; align-items: center;">
+                                    <div style="width: 18rem;">
+                                            <div class="card card-stats mb-4 mb-lg-0">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h5 class="card-title text-uppercase text-muted mb-0">درامد کل</h5>
+                                                                <span class="h2 font-weight-bold mb-0">
+                                                                    <%= finance.total%> تومان
+                                                                </span>
+                                                        </div>
+                                                    <div class="col-auto">
+                                                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                                            <i class="fas fa-chart-bar"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-4" style="display: flex; justify-content: center; align-items: center;">
+                                    <div style="width: 18rem;">
+                                            <div class="card card-stats mb-4 mb-lg-0">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h5 class="card-title text-uppercase text-muted mb-0">درامد سایت</h5>
+                                                                <span class="h2 font-weight-bold mb-0">
+                                                                    <%= finance.setour %> تومان
+                                                                </span>
+                                                        </div>
+                                                    <div class="col-auto">
+                                                        <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                            <i class="fas fa-percent"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-4" style="display: flex; justify-content: center; align-items: center;">
+                                    <div style="width: 18rem;">
+                                            <div class="card card-stats mb-4 mb-lg-0">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <h5 class="card-title text-uppercase text-muted mb-0">درامد قابل برداشت</h5>
+                                                                <span class="h2 font-weight-bold mb-0">
+                                                                    <%= finance.tour %> تومان
+                                                                </span>
+                                                        </div>
+                                                    <div class="col-auto">
+                                                        <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                                                            <i class="fas fa-percent"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <%- include ../partials/error %>
+                        <div class="row" style="display: flex; justify-content: center;">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form-control" style="width: 100%; display: flex;"> مبلغ تسویه حساب </label>
+                                    <input type="text" class="form-control" id="checkout" placeholder="مبلغ تسویه را به تومان وارد کنید" name="checkout">
+                                    <small id="checkoutFarsi" style="width: 100%; display: flex; margin-top: 2px;"> 0 تومان </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px; padding-left: 15px; padding-right: 15px;">
+                            <textarea class="form-control" required id="extra" name="extra" rows="4" placeholder="این پیام به تیم فنی ارسال میشود لطفا اطلاعاتی مثل شماره حساب را در این بخش بنویسید"></textarea>
+                        </div>
+                        <button class="btn btn-icon btn-3 btn-primary btn-block" type="submit" >
+                            <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                            <span  class="btn-inner--text">ثبت درخواست تسویه</span>
+                        </button>
+                    </form>
+                </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <!-- farsi numbers -->
+            <script src="/js/prnum.js"></script>
+            <script>
+            document.getElementById("checkout").addEventListener("keyup", function() {
+                document.getElementById("checkout").value = convertPrToEn(document.getElementById("checkout").value)
+                document.getElementById("checkoutFarsi").innerText = document.getElementById("checkout").value.toPersianLetter() + " تومان " ;
+            });
+            </script>
+            <!-- Footer -->
+            <% include ../partials/footer %>
+          </div>
+        </div>
+        <!-- Include scripts -->
+        <% include ../partials/scripts %>
+      </body>
+      

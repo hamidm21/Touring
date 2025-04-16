@@ -1,0 +1,47 @@
+<div class=" ">
+    <div class="row justify-content-center">
+        <div class="col-md-5"  style="margin-bottom: 5%;margin-top:5%">
+            <div class="card card-default">
+                <div class="card-header"><h5>ورود</h5></div>
+                <div class="card-body ">
+
+                    <form class="form-horizontal" role="form" method="POST" action="/auth/login" novalidate>
+
+                        <%- include(viewPath('layouts/error-messages')) -%>
+
+                        <div class="form-group">
+                            <label for="phonenumber" class="control-label">شماره تلفن</label>
+                            <input id="phonenumber" type="text" class="form-control" name="phonenumber" value="<%= old('phonenumber') %>" required autofocus="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="password" class="control-label">پسورد</label>
+                            <input id="password" type="password" class="form-control" name="password" value="<%= old('password') %>" required>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <input type="checkbox" name="remember"> یادآوری ورود
+                                <label>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                ورود
+                            </button>
+                            <a href="/auth/register" class="btn btn-danger">قبلا ثبت نام نکرده ام</a>
+                            <!--<a class="btn btn-link" href="/auth/password/reset">-->
+                            <!--رمز عبور را فراموش کردم!-->
+                            <!--</a>-->
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

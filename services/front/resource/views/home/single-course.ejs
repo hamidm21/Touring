@@ -1,0 +1,207 @@
+<link rel="stylesheet" href="/css/quill.css">
+<div class="container">
+    <div class="row mt-3">
+
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-12  text-white bg-light ">
+            <div class="col-12 col-md-12   text-center " >
+                <div class="d-none d-sm-block">
+                    <img class="   "style="width: 950px;height: 390px" src="<%= trip.bannerURL %>" alt="">
+                </div>
+
+                <div class="d-block d-sm-none " >
+                    <img class="    "style="width: 100%" src="<%= trip.bannerURL %>" alt="">
+
+                </div>
+            </div>
+            <div class="row container p-2 ">
+
+                <div class="col-md-6">
+                    <h2 class=" text-dark  "><strong><%= trip.title %></strong></h2>
+                    <span class="text-dark font-weight-bold"  style="border-radius: 5px;"><%= trip.origin %> </span><br>
+                    <div class="mt-3" ><span class=" badge-dark p-1   " style="border-radius: 5px"><%= trip.prOpeningDate  %></span></span></div>
+
+                </div>
+
+                <div class="col-md-6 text-left font-weight-bold ">
+                    <label for="" class="  text-secondary  p-3 ml-3 " >   <span class="">هزینه  :</span> <%= trip.price %> تومان</lable>
+
+                    <br>
+                    <a class=""   href="<%=`/trip/${trip.slug}/sign?count=1`%>"> <button class="bttn-material-flat bttn-md bttn-success">ثبت نام در تور →</button></a>
+                </div>
+            </div>
+
+
+            <hr/>
+            <!-- Post Content -->
+            <div id="content" style="color: black;" >
+             <p class="p-2  "><%- trip.text %></p>
+         </div>
+            <div class="   my-2 text-center  ">
+                <table class="table   table-striped mt-2 table-light">
+
+                    <thead class="bg- backgreen "  >
+                    <tr>
+
+                        <th scope="col "><h1 class="h4">توضیحات خلاصه</h1></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+
+                        <td class="text-dark"><p class="p-2"><%= trip.description   %></p></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h4 class="text-center text-dark fontgreen font-weight-bold p-5 "> سفر در یک نگاه</h4>
+            </div>
+         
+        <div class="row shadow container p-5 m-1 " style="border-radius: 30px ;border: 1px solid darkgrey ;">
+
+            <div class="col-md-3  bg-light font-weight-bold text-center  "  >
+
+                <label for="" class="  text-dark   p-2"> <span class="fontgreen "> راهنمای تور </span>: <%= trip.dataTable.leader %> </lable>
+                <hr>
+                <label for="" class="  text-  p-2" > <span class="fontgreen "> ظرفیت باقی مانده </span>: <%= trip.capacity - trip.registered %>نفر </lable>
+                 <hr>
+                <label for="" class="  text-  p-2" > <span class="fontgreen "> قیمت </span>: <%= trip.price %> تومان </lable>
+                <hr>
+                <label for="" class="  text-  p-2" > <span class="fontgreen "> شروع سفر </span>: <%= trip.dataTable.openingDate %> </lable>
+                    <hr>  <label for="" class="  text-  p-2" > <span class="fontgreen "> محل حرکت </span>:<%= trip.origin  %> </lable>
+
+            </div>
+
+            <div class="col-md-3 bg-light    font-weight-bold text-center " >
+
+                <label for="" class="  text-dark  p-2" > <span class="fontgreen "> نام آژانس </span>: <%= trip.tourName %> </lable>
+                    <hr>
+                    <label for="" class="  text-  p-2" > <span class="fontgreen "> ثبت نام کرده اند </span>: <%= trip.registered %>نفر </lable>
+                        <hr>
+                        <label for="" class="  text-  p-2" > <span class="fontgreen "> مقصد </span>: <%= trip.destination %> </lable>
+                            <hr>
+                        <label for="" class="  text-  p-2" > <span class="fontgreen "> مدت زمان </span>: <%= trip.dataTable.duration %> </lable>
+                            <hr>   
+                            <label for="" class="  text-  p-2" > <span class="fontgreen  ">  پایان سفر </span>: <%= trip.dataTable.closingDate %></lable>
+                                <hr>
+                                <a class=""   href="<%=`/trip/${trip.slug}/sign?count=1`%>"> <button class="bttn-material-flat bttn-md bttn-success">ثبت نام در تور </button></a>
+
+            </div>
+            <div class="col-md-6">
+
+                <table class="table table-striped mt-2 table-light text-center" >
+
+                        <thead class="bg- backgreen "  >
+                        <tr>
+    
+                            <th scope="col ">توضیحات تکمیلی</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-dark"><%= trip.dataTable.extra   %></td>
+                        </tr>
+    
+                        </tbody>
+                    </table>
+                <table class="table-responsive table-bordered mt-2 table-light   text-center">
+
+                        <thead class="bg- backgreen "  >
+                        <tr>
+
+                            <th scope=" ">وسایل مورد نیاز</th>
+                            <th scope=" ">خدمات تور</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-dark"><%= trip.dataTable.required   %></td>
+                            <td class="text-dark"><%= trip.dataTable.services   %></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+            </div>
+        </div>
+    
+        
+
+        <!--show images-->
+
+
+</div>
+
+    <div class="mt-10 container  "  >
+        <div class="row m-2">
+
+                <% trip.images.forEach(img => { %>
+
+                <div class="col-8 col-md-4 ">
+                    <img class=" p-2 shadow  " style="width: 300px; height: 200px" src="<%= img %>" alt="">
+                </div>
+                <% }) %>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+<!--recomonded() -->
+
+
+<div class="container mt-5">
+    <div class=" row">
+        <div class=" m-3 ">
+            <h4 ><button class="bttn-gradient bttn-md bttn-primary"> سفر های محبوب</button> </h4>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="container mt-3">
+    <div class=" row ">
+        <% getPopular.forEach(course => { %>
+            <div class="col-12 col-md-3  mb-4 ">
+                <div class="card shadow heightCart ">
+                    <a href="<%= `/trip/${course.slug}`  %>">
+    
+                        <img class="card-img-top cardHeight" src="<%= course.imgURL %>" alt="<%= course.title %>">
+                    </a>
+    
+                    <div class="card-body ">
+                        <h6 class=" p-1"><a class="text-dark text-decoration-none" href="<%= `/trip/${course.slug}`  %>"><%= course.title %></a></h6>
+                        <p class=" card-text"><%- course.description.substr(0,55)%>...</p>
+                       </div>
+                       <div class="card-footer text-muted alert-secondary sidebar-heading">
+                           <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark "> <%= course.prOpeningDate %></button></span>    <span ><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.capacity %> نفر </button></span>
+                        <button class="bttn-pill bttn-xs bttn-primary">  <%= course.tourName %> </button>
+    
+                        <hr>
+                        <!-- <span class=""><button class="bttn-minimal bttn-xs bttn-primary   text-dark"><%= course.leaderName %>  </button></span > -->
+                             <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.dataTable.origin.substr(0,18)%>...</button></span>    <span class=""><button class="bttn-pill bttn-xs bttn-success "> <%= course.price %>تومان </button></span>
+    
+    
+    
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+    </div>
+
+</div>
+
+<!--recomonded()End -->

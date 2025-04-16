@@ -1,0 +1,74 @@
+
+<div class="mt-5 container " >
+    <div class=" m-5 ">
+        <h4 ><button class="bttn-gradient bttn-lg bttn-success">  تماس با ما</button> </h4>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12   font-weight-bold text-center  "   >
+            <div>
+                <div class="card-bod  p-5  bg-light shadow"  style="border-radius: 30px ;border: 1px solid darkgrey ;">
+                   <h4 class="fontgreen mt-4 "> پیامتان را ارسال کنید </h4>
+
+                        <form class="form-horizontal " role="form" method="POST" action="/contactUs" novalidate>
+
+                        <%- include(viewPath('layouts/error-messages')) -%>
+                        <% if(success) { %> 
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span>
+                                        ×
+                                    </span>
+                                </button>
+                                <%= success %><br>
+                            </div>
+                        <% } %>
+
+                        <div class="form-group">
+
+                            <!--<label for="fullName" class="control-label">  </label>-->
+                            <input class="form-control my-4" type="text" name="fullName" id="fullName" placeholder="نام و نام خانوادگی" required>
+                            <!--<label for="email" class="control-label"> </label>-->
+                            <input id="email" type="email my-4" class="form-control" name="contactInfo" placeholder="ایمیل شما" required>
+                            <!--<label for="subject" class="control-label"> موضوع </label>-->
+                            <input class="form-control my-4" type="text" name="subject" placeholder="موضوع" id="subject" required>
+                        </div>
+                        <div class="md-form">
+                            <!--<label for="messaege" class="control-label">متن پیام</label>-->
+                            <textarea id="messaege" name="text" class="md-textarea form-control" placeholder="متن پیام" rows="3"></textarea>
+                        </div>
+                        <div class="form-group m-2">
+                            <button type="submit" class="bttn-material-flat bttn-md bttn-success px-5 mt-3">ارسال پیام</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6      font-weight-bold text-center "  >
+            <div class="p-4 shadow bg-light " style="border-radius: 30px ;border:1px solid darkgrey ;">
+                <div class="mt-5">
+                    <label for="" class="  text-dark   p-2" > <h4 class="fontgreen "> دیگر راه های تماس <small class="text-primary"> (شکایت,همکاری,پشتیبانی) </small></h4>  </lable>
+                        <hr>
+                        <label for="" class="  text-  p-2" > <span class=" ">  شماره تماس/ <small class="text-primary">همکاری تجاری</small>  </span> : 09359281932 </lable>
+                            <hr>
+                            <label for="" class="  text-  p-2" > <span class=" "> شماره تماس / <small class="text-primary">پشتیبانی و ثبت شکایت</small></span> : 09166599516 </lable>
+                                <hr>
+                                    <label for="" class="  text-  p-2" > <span class=" "> آدرس </span> :خرم آباد انتهای خ رازی کوچه ۴ پردیسان پلاک ۷ </lable>
+                                        <hr>
+                                        <label for="" class="  text-  p-2" > <span class=" "> کدپستی </span>: 6816877955 </lable>
+                                            <hr>
+                                            <label for="" class="  text-  p-2" > <span class=" "> ایمیل ما </span>: 3tourteam@gmail.com </lable>
+                                                <hr>
+                                                <a href="https://www.instagram.com/3tour.ir" class="  text-  p-2" > <span class=" "> شبکه های اجتماعی </span>: @3tour.ir on instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $('span').addClass('text-muted')
+    $('input').addClass('text-center ')
+</script>
+
+

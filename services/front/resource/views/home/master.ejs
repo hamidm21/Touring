@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><%- defineContent('title') || 'توسعه گردشگری 3تور' %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="3تور راهی آسان و مطمئن برای رزرو تور">
+    <meta name="keywords" content="اینجا همیشه لیستی از سفر های تفریحی کوتاه و بلند, بازدید از جاذبه های گردشگری نقاط مختلف ایران و حتی سفر های برون مرزی جذاب خواهید دید...">
+      <!-- Favicon -->
+    <link href="/img/logo.ico" rel="icon" type="image/ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap-rtl.min.css" />
+    <link rel="stylesheet" href="/css/vazir.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
+    <%- style %>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid darkgrey">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
+                <li class="nav-item"></li>
+                <a href="http://3tour.ir/get/3tour.apk">  <button class="bttn-material bttn-sm p-2 bttn-success  mr-2" type="submit" >دانلود اپلیکیشن</button>
+                </a>
+                <li class="nav-item  ml-2 mr-2">
+                    <a class="nav-link  font-weight-bold" href="/contactUs">تماس با ما</a>
+                </li>
+                <li class="nav-item  ml-2 mr-2">
+                    <a class="nav-link  font-weight-bold" href="/rules">قوانین و مقررات </a>
+                </li>
+                <li class="nav-item  ml-2 mr-2 ">
+                    <a class="nav-link  font-weight-bold fontgreen" href="/aboutUs">درباره ما</a>
+                </li>
+                <!--<li class="nav-item  ml-2 mr-2 ">-->
+                    <!--<a class="nav-link  font-weight-bold fontgreen" href="/trips">همه تور ها</a>-->
+                <!--</li>-->
+            </ul>
+            <a class="navbar ml-auto " href="/">
+                <!--<img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">-->
+                <img src="/logo_farsi_1.png" width="105" height="50" class="d-inline-block align-top  " style="margin-left:160px;" alt="">
+            </a>
+
+            <form class="form-inline my-2 my-lg-0 badge-light badge p-1 shadow "  action="/search" method="get" style="background-color:rgba(0, 0, 0, 0);">
+
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="جست و جوی تور" aria-label="search">
+                <button class="bttn-material-flat bttn-sm p-2 bttn-success" type="submit">جست و جو</button>
+            </form>
+        </div>
+    </nav>
+
+    <!--<div class="m-2 d-block d-md-none">-->
+
+        <!--<a  href="/auth/register">  <button class="bttn-material-flat bttn-sm p-2 bttn-success" style="widows: 70px;" type="submit">ثبت نام</button>-->
+        <!--</a>-->
+
+        <!--<a href="/auth/login">  <button class="bttn-bordered bttn-sm p-2 bttn-success  mr-2" type="submit" style="width: 70px;">ورود</button>-->
+        <!--</a>-->
+        <!--<a class=" " href="/">-->
+            <!--&lt;!&ndash;<img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">&ndash;&gt;-->
+            <!--<img src="logo_z.png" width="140" height="45" class="d-inline-block align-top  " style="margin-left:px;" alt="">-->
+        <!--</a>-->
+    <!--</div>-->
+    <div class="  ">
+
+      <%- body %>
+
+    </div>
+
+
+        <div class="Footer p-3">
+            <a href="/rules"><button class="bttn-bordered bttn-sm bttn-success">قوانین ما</button></a>
+            <a href="/aboutUs">   <button class="bttn-bordered bttn-sm bttn-success"> درباره ما</button></a>
+            <a href="/contactUs"><button class="bttn-bordered bttn-sm bttn-success"> تماس با ما</button></a>
+            <a class=" text-center  " href="/">
+                <!--<img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">-->
+                <img src="/logo_english_1.png " width="90" height="38" class="p-2  " style="margin-left:px;border-radius: 30px" alt="">
+            </a>
+        </div>
+        <!-- Footer -->
+        <footer class="page-footer font-small text-light teal pt-5 backgreen">
+
+            <nav class="nav nav-pils justify-content-center" >
+
+                <!--<a class="nav-item nav-link " href=""><img class="imgSocial" src="" alt=""></a>-->
+                <!--<a class="nav-item nav-link " href="#"><img class="imgSocial" src="" alt=""></a>-->
+                <!--<a class="nav-item nav-link" href="#"><img class="imgSocial" src="" alt=""></a>-->
+            </nav>
+            <!-- Copyright -->
+
+            <div class="text-center">تمامی حقوق متعلق به 3تور میباشد , انتشار مطالب با ذکر منبع بلا مانع است</div>
+            <div class="footer-copyright text-center py-3"> 2020© Copyright:
+                <a class="bg-primary p-2 text-white" href="http://www.3tour.ir/">3tour.ir</a>
+
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/services/front/public/js/script.js"></script>
+    <script src="/services/front/public/js/owl.carousel.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145305000-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145305000-1');
+    </script>
+
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <%- script %>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class=" mt-5 container " >
+    <div class="row shadow container  " style="border-radius: 30px ;border: 1px solid darkgrey ;">
+
+        <div class="col bg-light  p-5  font-weight-bold text-center " >
+
+<% if(req.query.success === 'true') {%>
+            <label for="" class="  text-dark  p-2" > <h3 class="fontgreen "> پرداخت با موفقیت انجام شد </h3>
+            </label>
+            <hr>
+            <% } else if(req.query.success === 'false' ){ %>
+
+            <label for="" class="  text-dark  p-2" > <h3 class="alert-danger "> پرداخت با موفقیت انجام نشد </h3>
+            </label>
+            <hr>
+            <% } %>
+
+            <label for="" class="  text-dark  p-2" > <span class=" ">شناسه پرداخت </span> : <%= req.query.refId%>
+                </label>
+                    <hr> <label for="" class="  text-dark  p-2" > <span class=" ">نام آژانس </span> : <%= req.query.tourName %>
+                    </label>
+                        <hr>
+
+                        <label for="" class="  text-dark  p-2" > <span class=" "> نام تور </span> : <%= req.query.tripName %>
+                        </label>
+                            <hr>
+                            <label for="" class="  text-  p-2" > <span class=" ">  مبلغ </span> : <%= req.query.amount%>
+                            </label>
+
+                                <hr>
+
+
+
+                        <a class=""  href=<%= req.query.returnTo %>  > <button class="bttn-material-flat bttn-md bttn-success"> بازگشت به صفحه اصلی  </button></a>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

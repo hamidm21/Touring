@@ -1,0 +1,108 @@
+<body>
+        <!-- Sidenav -->
+        <% include ../partials/sidebar %>
+        <!-- Main content -->
+        <div class="main-content">
+          <!-- Top navbar -->
+          <%- include('../partials/navbar', {fullName: nav.fullName}) %>
+          <!-- Header -->
+          <%- include('../partials/header', {header: header}) %>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <!-- Table -->
+            <div class="row" style="display: block;">
+              <div class="col" style="direction: rtl;">
+                <div class="card shadow">
+                  <div class="card-header bg-transparent" style="display: flex; direction: ltr; justify-content: space-between;">
+                    <div class="d-flex justify-content-between">
+                    <a href="/trips/create" class="btn btn-sm btn-success mr-4" style="display: flex; align-items: center;">
+                        <i class="ni ni-fat-add" style="padding: 2px; font-size: large;"></i>
+                        ثبت سفر
+                    </a>
+                    <!-- <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
+                    </div>
+                    <h3 class="mb-0" style="display: flex;">سفر ها</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <div class="hamid">
+                                <tr>
+                                    <th scope="col">نام</th>
+                                    <th scope="col">لیدر</th>
+                                    <th scope="col">مبدا</th>
+                                    <th scope="col">مقصد</th>
+                                    <th scope="col">ثبت نام/ظرفیت</th>
+                                    <th scope="col">اعمال</th>
+                                </tr>
+                            </div>
+                        </thead>
+                        <tbody>
+                          <% for(var i = 0; i < list.trips.length; i++) { %>
+                            <tr>
+                              <th scope="row">
+                                <div class="media align-items-center">
+                                  <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="<%= list.trips[i].title %>">
+                                    <img alt="Image placeholder" src="/img/theme/global.png" class="rounded-circle">
+                                  </a>
+                                  <div class="media-body">
+                                    <span class="mb-0 text-sm"><%= list.trips[i].title %></span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td>
+                                <div class="media-body">
+                                    <%= list.trips[i].leaderName %>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="media-body">
+                                    <%= list.trips[i].origin %>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="media-body">
+                                    <%= list.trips[i].destination %>
+                                </div>
+                              </td>
+                              <td>
+                                <%if (list.trips[i].archived) { %>
+                                  <span class="badge badge-warning">آرشیو</span>
+                                  <% } %>
+                                <div class="d-flex align-items-center" style="justify-content: flex-end;">
+                                  <span class="mr-2"><%= list.trips[i].registered +" / "+ list.trips[i].capacity %></span>
+                                </div>
+                              </td>
+                              <td class="text-left">
+                                <div class="dropdown">
+                                  <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; justify-content: center; align-items: center;">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="<%= "/trips/archive/" + list.trips[i].id%>">آرشیو</a>
+                                    <a class="dropdown-item" href="<%= "/trips/" + list.trips[i].slug + "/users?page=1" %>" > لیست ثبت نام</a>
+                                    <a class="dropdown-item" href="<%= "/trips/edit/" + list.trips[i].id %>" > ویرایش</a>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          <% } %>
+                        </tbody>
+                      </table>
+                      <div class="card-footer py-4">
+                        <%- include('../partials/pagination', {page: list.page, pages: list.pages}); %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- Footer -->
+            <% include ../partials/footer %>
+          </div>
+        </div>
+      
+        <!-- Include scripts -->
+        <% include ../partials/scripts %>
+      </body>
+      

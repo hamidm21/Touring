@@ -1,0 +1,87 @@
+<body>
+  <!-- Sidenav -->
+  <% include ../partials/sidebar %>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <%- include('../partials/navbar', {fullName: nav.fullName}); %>
+    <!-- Header -->
+    <% include ../partials/header %>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <!-- Table -->
+      <div class="row" style="display: block;">
+        <div class="col" style="direction: rtl;">
+          <div class="card shadow">
+            <div class="card-header bg-transparent">
+              <h3 class="mb-0" style="display: flex;">ثبت نام های ( <%= title %> )</h3>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                        <th scope="col">نام کامل</th>
+                        <th scope="col">شماره تماس</th>
+                        <th scope="col">کد ملی</th>
+                        <th scope="col">تور ها</th>
+                        <th scope="col">عمل ها</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for (var i=0; i< registers.length; i++) { %>
+                        <tr>
+                            <th scope="row">
+                              <div class="media align-items-center">
+                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="<%= registers.fullName %>">
+                                  <img alt="Image placeholder" src="/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                </a>
+                                <div class="media-body" >
+                                  <span class="mb-0 text-sm"><%= registers[i].fullName %></span>
+                                </div>
+                              </div>
+                            </th>
+                            <td>
+                                <%= registers[i].phoneNumber %>
+                            </td>
+                            <td>
+                                <%= registers[i].mid %>
+                            </td>
+                            <td>
+                              <div class="avatar-group">
+                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="<%= title %>">
+                                  <img alt="Image placeholder" src="/img/theme/global.png" class="rounded-circle">
+                                </a>
+                              </div>
+                            </td>
+                            <td class="text-left">
+                              <div class="dropdown">
+                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; justify-content: center; align-items: center;">
+                                  <i class="fas fa-ellipsis-v"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                      <% } %>
+                  </tbody>
+                </table>
+                <div class="card-footer py-4">
+                  <%- include('../partials/pagination', {page, pages}); %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <% include ../partials/footer %>
+    </div>
+  </div>
+
+  <!-- Include scripts -->
+  <% include ../partials/scripts %>
+</body>

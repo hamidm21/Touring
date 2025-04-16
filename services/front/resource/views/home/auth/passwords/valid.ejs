@@ -1,0 +1,89 @@
+
+    <div class="row m-5 pt-3 justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header"><h5> فعالسازی</h5></div>
+                <!--<div class="card-title">Registration closes in <span id="timer">05:00<span> minutes!</div>-->
+                <div class="card-body">
+                    <form id="activate-form" class="form-horizontal" action="/auth/password/valid" role="form" method="POST"  novalidate>
+                        <%- include(viewPath('layouts/error-messages')) -%>
+                        <div class="form-group">
+                            <label for="vCode" class="control-label">کد فعالسازی</label>
+                            <input id="vCode" type="text" class="form-control" name="vCode" value="">
+                            <input id="phone" type="hidden" name="phone" value=<%= phone %> >
+                        </div>
+
+                        <!-- <div class="form-group">
+                            recaptcha
+                        </div> -->
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                فعالسازی
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+                <form role="form" method="POST" action="/auth/password/valid" action="">
+            <div class="alert alert-primary alert-dismissible ">
+
+                <div id="text1" class="text-dark d-flex justify-content-center"> پس از دو دقیقه دوباره امتحان کنید</div>
+                <div id=timer class="text-dark font-weight-bold pt-2 d-flex justify-content-center"></div>
+
+                <div id="text1" class=" d-flex justify-content-center">
+                    <button id="myButton"  class=" btn btn-primary "  type="submit">دریافت مجدد</button>
+                </div>
+            </div>
+        </form>
+    </div>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="jquery.timer.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var timeoutHandle;
+
+    function countdown(minutes, seconds) {
+        var seconds = 60;
+        var mins = minutes
+
+        function tick() {
+            var counter = document.getElementById("timer");
+            var current_minutes = mins - 1
+            seconds--;
+            counter.innerHTML =
+                current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+            if (seconds > 0) {
+                timeoutHandle = setTimeout(tick, 1000);
+            } else {
+
+                if (mins > 1) {
+
+                    // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
+                    setTimeout(function() {
+                        countdown(mins - 1);
+                    }, 1000);
+
+                }
+            }
+        }
+        tick();
+
+    }
+
+    countdown(2);
+
+</script>
+
+<script>
+    $(function() {
+        setTimeout(function() {
+            $('#myButton').show();
+        }, 60000*2);
+        $('#myButton').click(function() {
+            $('#text1').hide();
+            $('#text2').show();
+        });
+    });
+</script>

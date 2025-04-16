@@ -1,0 +1,179 @@
+<body>
+  <!-- Sidenav -->
+  <% include ../partials/sidebar %>
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Top navbar -->
+    <%- include('../partials/navbar', {fullName: nav.fullName}); %>
+    <!-- Header -->
+    <%- include('../partials/header', {header: header}); %>
+    <!-- <% include('../partials/header', header); %> -->
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row mt-5">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">آخرین کاربر های آژانس</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="/users?page=1" class="btn btn-sm btn-primary">مشاهده همه</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">نام کامل</th>
+                    <th scope="col">شماره تلفن</th>
+                    <th scope="col">کد ملی</th>
+                    <th scope="col">تور ها</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% var index = tables.users.length > 4 ? 3 : tables.users.length - 1 %>
+                    <% for (var i = 0; i <= index; i++) { %>
+                    <tr>
+                      <th scope="row">
+                        <%= tables.users[i].fullName %>
+                      </th>
+                      <td>
+                        <%= tables.users[i].phoneNumber %>
+                      </td>
+                      <td>
+                        <%= tables.users[i].mid %>
+                      </td>
+                      <td>
+                        <% var jIndex = tables.users[i].trips.length > 4 ? 3 : tables.users[i].trips.length - 1 %>
+                        <% for( var j = 0; j <= jIndex ; j++ ) { %>
+                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="<%= tables.users[i].trips[0].title %>">
+                          <img alt="Image placeholder" src="/img/theme/global.png" class="rounded-circle">
+                        </a>
+                        <% } %>
+                      </td>
+                    </tr>
+                    <tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">تور ها</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="/trips?page=1" class="btn btn-sm btn-primary">مشاهده همه</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">اسم تور</th>
+                    <th scope="col">لیدر</th>
+                    <th scope="col">ثبت نام/ظرفیت</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% var fIndex = tables.trips.length > 4 ? 3 : tables.trips.length - 1 %>
+                  <% for(var f = 0; f <= fIndex; f++) { %>
+                    <tr>
+                      <th scope="row">
+                        <%= tables.trips[f].title %>
+                        </th>
+                      <td>
+                        <%= tables.trips[f].leaderName %>
+                      </td>
+                      <td>
+                        <%= tables.trips[f].registered +" / "+ tables.trips[f].capacity %>
+                      </td>
+                    </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-xl-8 mb-5 mb-xl-0">
+          <div class="card shadow">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">آخرین پرداخت ها</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="/users?page=1" class="btn btn-sm btn-primary">مشاهده همه</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">نام کامل</th>
+                    <th scope="col">شماره تماس</th>
+                    <th scope="col">تعداد رزرو</th>
+                    <th scope="col">مبلغ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% var index = tables.receipts.length > 4 ? 3 : tables.receipts.length - 1 %>
+                    <% for (var i = 0; i <= index; i++) { %>
+                    <tr>
+                      <th scope="row">
+                        <%= tables.receipts[i].trip ? tables.receipts[i].trip.registers[0].fullName : tables.receipts[i].user.fullName %>
+                      </th>
+                      <td>
+                        <%= tables.receipts[i].trip ? tables.receipts[i].trip.registers[0].phoneNumber : tables.receipts[i].user.phoneNumber %>
+                      </td>
+                      <td>
+                        <%= tables.receipts[i].type === "credit" ? tables.receipts[i].payment.registeredCount: "نامشخص" %>
+                      </td>
+                      <td>
+                        <% if (tables.receipts[i].type === "credit") { %>
+                        <p class="mt-3 mb-0">
+                          <span class="text-success mr-2">
+                            <i class="fa fa-arrow-up"></i>
+                            <%= tables.receipts[i].amount %> تومان
+                          </span>
+                      </p>
+                      <% } else { %>
+                        <p class="mt-3 mb-0">
+                          <span class="text-danger mr-2">
+                            <i class="fa fa-arrow-down"></i>
+                            <%= tables.receipts[i].tourAmount %> تومان
+                          </span>
+                      <% }%>
+                      </p>
+                      </td>
+                    </tr>
+                    <tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <% include ../partials/footer %>
+    </div>
+  </div>
+  <!-- Include scripts -->
+  <% include ../partials/scripts %>
+</body>
+

@@ -1,0 +1,382 @@
+<!--second nav with category and search-->
+<!-- Favicon -->
+<link href="/img/logo.ico" rel="icon" type="image/ico">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<!--<div id="carouselExampleIndicators" class="carousel slide    " data-ride="carousel">-->
+    <!--<ol class="carousel-indicators">-->
+        <!--<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
+        <!--<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+        <!--<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+    <!--</ol>-->
+    <!--<div class="carousel-inner">-->
+        <!--<div class="carousel-item  ">-->
+            <!--<img src="/photo-1484501717810-b0c3d22a808a.jpg" class="d-block w-100 " style=" " alt="...">-->
+
+        <!--</div>-->
+        <!--<div class="carousel-item">-->
+            <!--<img src="/photo-1478601944016-d4fe7cba47c9.jpg" class="d-block w-100" alt="...">-->
+
+        <!--</div>-->
+        <!--<div class="carousel-item  active">-->
+            <!--<img src="/photo-1512704515581-de233a09dae8.jpg" class="d-block w-100 " alt="...">-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+        <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+        <!--<span class="sr-only">Previous</span>-->
+    <!--</a>-->
+    <!--<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+        <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+        <!--<span class="sr-only">Next</span>-->
+    <!--</a>-->
+<!--</div>-->
+<!-- Modal -->
+<!-- <div style="direction: ltr;" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">اطلاعیه</h5>
+          <button style="display: flex;
+          justify-content: flex-end;
+          width: 100%;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            به علت شیوع بیماری کرونا تا اطلاع ثانوی در این وبسایت سفری قرار نمیگیرد
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div class="test">
+    <div id="particles-js" class="background" ></div>
+    <div class="p-5 ">
+        <div  class="col-md-12 p-5 col-12 text-white " >
+            <h1 class=" h1 font-weight-bold "><span ><button class="bttn-pill bttn-lg bttn-primary p-3">  <strong>3تور</strong></button></span> راهی آسان و مطمئن برای رزرو  تور     !</h1>
+            <h5 class="pt-2 pb-2 h4 ">سامانه ای جامع برای آژانس های گردشگری </h5>
+            <h6 class="pt-2 d-none d-sm-block ">اینجا همیشه لیستی از سفر های تفریحی کوتاه و بلند, بازدید از جاذبه های گردشگری نقاط مختلف ایران و حتی سفر های برون مرزی جذاب خواهید دید...</h6>
+            <div class="col-md-12 col-12 p-2  ">
+                <img class="cardHeight " src="undraw_into_the_night_vumi.svg" alt="3tour">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class=" row">
+        <div class=" m-3 ">
+              <h4 ><button class="bttn-gradient bttn-md bttn-success"> سفر های پیش رو</button> </h4>
+
+
+        </div>
+
+        <div class=" ">
+            <div class=" m-3   ">
+
+                <a class=""   href="/trips"> <button class="bttn-material bttn-md bttn-primary " style="justify-content: space-between;">سفر های بیشتر →</button></a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="container mt-3">
+    <div class=" row ">
+        <% recentTrips.forEach(course => { %>
+        <div class="col-12 col-md-3  mb-5 ">
+            <div class="card shadow heightCart ">
+                <a href="<%= `trip/${course.slug}`  %>">
+
+                    <img class="card-img-top cardHeight" src="<%= course.imgURL %>" alt="<%= course.title %>">
+                </a>
+
+                <div class="card-body ">
+                    <h6 class=" p-1"><a class="text-dark text-decoration-none" href="<%= `trip/${course.slug}`  %>"><%= course.title %></a></h6>
+                    <p class=" card-text"><%- course.description.substr(0,55)%>...</p>
+
+
+                </div>
+                <div class="card-footer text-muted alert-secondary sidebar-heading">
+                    <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark "> <%= course.prOpeningDate %></button></span>    <span ><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.capacity %> نفر </button></span>
+                    <button class="bttn-pill bttn-xs bttn-primary">  <%= course.tourName %> </button>
+
+                    <hr>
+                    <!-- <span class=""><button class="bttn-minimal bttn-xs bttn-primary   text-dark"><%= course.leaderName %>  </button></span > -->
+                         <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.dataTable.origin.substr(0,18)%>...  </button></span>    <span class=""><button class="bttn-pill bttn-xs bttn-success "> <%= course.price %>تومان </button></span>
+
+
+
+                </div>
+            </div>
+        </div>
+        <% }) %>
+
+    </div>
+
+</div>
+     <div class=" mt-3 ">
+         <div class="col-12 col-md-12 d-flex justify-content-center ">
+             <a class=""   href="/trips"> <button class="bttn-material-flat bttn-md bttn-primary">نمایش بیشتر →</button></a>
+         </div>
+     </div>
+
+
+
+
+
+<!--recomonded(popular) -->
+<!--<div class="container mt-5">-->
+    <!--<div class=" row">-->
+        <!--<div class=" m-3 ">-->
+            <!--<h4 ><button class="bttn-gradient bttn-md bttn-success">محبوب ترین سفر ها</button> </h4>-->
+
+
+        <!--</div>-->
+
+
+    <!--</div>-->
+
+<!--</div>-->
+
+<!--<div class="container">-->
+    <!--<div class=" row ">-->
+        <!--<% getPopular.forEach(course => { %>-->
+        <!--<div class="col-12 col-md-3  mb-4 ">-->
+            <!--<div class="card shadow heightCart ">-->
+                <!--<a href="<%= `/trip/${course.slug}`  %>">-->
+
+                    <!--<img class="card-img-top cardHeight" src="<%= course.imgURL %>" alt="<%= course.title %>">-->
+                <!--</a>-->
+
+                <!--<div class="card-body ">-->
+                    <!--<h6 class=" p-1"><a class="text-dark text-decoration-none" href="<%= `trip/${course.slug}`  %>"><%= course.title %></a></h6>-->
+                    <!--<p class=" card-text"><%- course.description.substr(0,130)%>...</p>-->
+                   <!--</div>-->
+                <!--<div class="card-footer text-muted alert-secondary sidebar-heading">-->
+                    <!--<span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark "> <%= course.prOpeningDate %></button></span>    <span ><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.capacity %> نفر </button></span>-->
+                    <!--<button class="bttn-pill bttn-xs bttn-primary">  <%= course.tourName %> </button>-->
+
+                    <!--<hr>-->
+                    <!--&lt;!&ndash; <span class=""><button class="bttn-minimal bttn-xs bttn-primary   text-dark"><%= course.leaderName %>  </button></span > &ndash;&gt;-->
+                         <!--<span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.dataTable.origin %> </button></span>    <span class=""><button class="bttn-pill bttn-xs bttn-success "> <%= course.price %>تومان </button></span>-->
+
+
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<% }) %>-->
+
+    <!--</div>-->
+
+<!--</div>-->
+<!--recomonded(popular) End -->
+
+<!--recomonded() -->
+
+<div class="section bg-gradient background my-5">
+    <div class="container">
+        <div class="call-to-action ">
+            <h2 class="h1">دانلود اپلیکیشن</h2>
+            <p class="h6  text-light "> دوستان فعال در حوزه ی گردشگری و تور لیدر ها و آژانس داران  جهت همکاری تجاری با ما تماس بگیرید</p>
+            <div class="my-3">
+
+                <a  href="/contactUs">  <button class="bttn-material-flat bttn-sm px-5 py-2 bttn-success" style="widows: 70px; height: 48px;" type="submit"> تماس با ما</button>
+                </a>
+
+                <a  href="http://3tour.ir/get/3tour.apk">  <button class="bttn-bordered bttn-sm px-4 py-2 bdge" style="widows: 70px; height: 48px;" type="submit">دانلود اپ اندروید</button>
+                </a>
+                <a href="https://anardoni.com/ios/app/ZZ749lJ39"><img src="/img/anardoni.png" alt="دانلود از اناردونی" style="height: 48px;" class="bdge" /></a>     
+                <a href="https://iapps.ir/app/3tour/678022369"><img src="/img/Iapps.svg" alt="دانلود از آی اپس" style="height: 48px;" class="bdge" /></a>
+                <a href="https://sibche.com/applications/3tour?utm_source=3%20%D8%AA%D9%88%D8%B1&utm_medium=referral&utm_campaign=download_badge"><img src="/img/Sibche.svg" class="bdge" height="48" alt="دانلود3 تور از سیبچه" /></a>            </div>
+            <!--<p class="text-primary"><small><i>*از ورژن 5 اندروید و 10 به بالای پشتیبانی میشود</i></small></p>-->
+        </div>
+    </div>
+</div>
+
+<!--3leader-->
+<div class="section light-bg" style="width: inherit;">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-8 d-flex align-items-center">
+                <ul class="list-unstyled ui-steps">
+                    <li class="media">
+                        <div class="circle-icon ml-4">1</div>
+                        <div class="media-body">
+                            <h5>نیازی به ثبت نام و دردسرهاش نیست</h5>
+                            <p>به سادگی سفر های پیش رو را مشاهده کنید , سفر دلخواه را انتخواب کنید و بدون نیاز به ثبت نام در سایت با واریز آنلاین ثبت نام کرده و از سفر خود لذت ببرید</p>
+                        </div>
+                    </li>
+                    <li class="media my-4">
+                        <div class="circle-icon ml-4">2</div>
+                        <div class="media-body">
+                            <h5>کلی تخفیف ویژه اینجا هست</h5>
+                            <p>با پرداخت و رزرو آنلاین بخشی از هزینه های ثبت نام سنتی محو میشود و میتوانید به سادگی از تخفیف های ویژه و مبالغ کمتر سفر ها نسبت به ثبت نام سنتی استفاده کنید</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="circle-icon ml-4">3</div>
+                        <div class="media-body">
+                            <h5>برای اکیپ خودتون بلیط تهیه کنید</h5>
+                            <p>برای شما که گروهی سفر میروید و دوستانی پایه ی سفر و طبیعت گردی دارید , شما براحتی میتوانید به تعداد دلخواهتان بلیط رزرو کنید:)</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4   ">
+                <div class="d-none d-sm-block">
+                <img src="undraw_lost_online_wqob.svg" style="width: 500px;"  alt="Syncing"/>
+                </div>
+                <div class="d-block d-sm-none " >
+                <img src="undraw_lost_online_wqob.svg" class=""width="100%"  alt="Syncing"/>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!--3leader-->
+<div class="container mt-5">
+    <div class=" row">
+        <div class=" m-3 ">
+            <h4 ><button class="bttn-gradient bttn-md bttn-success"> سفر های پیشنهادی</button> </h4>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class=" row ">
+        <% getSuggested.forEach(course => { %>
+            <div class="col-12 col-md-3  mb-4 ">
+                <div class="card shadow heightCart ">
+                    <a href="<%= `/trip/${course.slug}`  %>">
+    
+                        <img class="card-img-top cardHeight" src="<%= course.imgURL %>" alt="<%= course.title %>">
+                    </a>
+    
+                    <div class="card-body ">
+                        <h6 class=" p-1"><a class="text-dark text-decoration-none" href="<%= `trip/${course.slug}`  %>"><%= course.title %></a></h6>
+                        <p class=" card-text"><%- course.description.substr(0,55)%>...</p>
+                       </div>
+                    <div class="card-footer text-muted alert-secondary sidebar-heading">
+                        <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark "> <%= course.prOpeningDate %></button></span>    <span ><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.capacity %> نفر </button></span>
+                        <button class="bttn-pill bttn-xs bttn-primary">  <%= course.tourName %> </button>
+    
+                        <hr>
+                        <!-- <span class=""><button class="bttn-minimal bttn-xs bttn-primary   text-dark"><%= course.leaderName %>  </button></span > -->
+                             <span class=""><button class="bttn-minimal bttn-xs bttn-primary  text-dark"><%= course.dataTable.origin.substr(0,18)%>...</button></span>    <span class=""><button class="bttn-pill bttn-xs bttn-success "> <%= course.price %>تومان </button></span>
+    
+    
+    
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+    </div>
+
+</div>
+
+<div>
+    <section class=" " style="margin-bottom : 10%; margin-top : 10%">
+        <div class=container">
+            <h2 class="h1 font-bold text-center text-gray-800 mb-5 ">
+                نکات بیشتر
+            </h2>
+            <div class="row mx-2   ">
+                <div class=" col-12 col-md-4  mb-4   pt-3" >
+                    <div class="bg-light px-5  shadow py-4 radius">
+                        <span class="oi oi-warning text-dark icon ml-3" ></span>
+
+                        <p class="">
+                            ●تمامی تراکنشها و پرداختی ها بصورت آنلاین انجام میشوند
+                            <br> ●لیست پرداختی ها و ثبت نامی ها برای هر سفر در صفحه ی مربوط به آژانس گردشگری شما نمایش داده میشوند</p>
+                        <p class="text-gray-500 text-xs md:text-sm p">3tour.ir</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4  pt-3">
+                    <div class="bg-light px-5  shadow py-4 radius" >
+                        <span class="oi oi-rss text-dark icon ml-3" ></span>
+
+                        <p class="">●با ثبت نام کاربرهای خودتون ، میتونید اونها رو مشاهده کنید
+
+                            <br>     ●امنیت اطلاعات در سیستم کاملا برقرار هست
+                            <br>   ●یک آژانس گردشگری میتواند چند تورلیدر در سایت ثبت کند</p>
+                        <p class="text-gray-500 text-xs md:text-sm px-6">3tour.ir</p>
+                    </div>
+                </div>
+                <div class=" col-12 col-md-4 mb-4 pt-3 ">
+                    <div class="bg-light px-5  shadow py-4 radius">
+                        <span class="oi oi-phone text-dark icon ml-3" ></span>
+
+                        <p class=""> ●میتونید در این بخشها سفر های آژانستون رو ثبت کنید
+                    <br>    ●علاوه بر وبسایت یک اپلیکیشن اندروید نیز طراحی شده است که لینک دانلود آن در وبسایت موجود است  </p>
+                        <p class="text-gray-500 text-xs md:text-sm px-6">3tour.ir</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!--recomonded()End -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.menu-aim.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<style>
+    @media (max-width: 530px) {
+        .bdge {
+            margin-top: 10px;
+        }
+    }
+</style>
+<script type="text/javascript">
+
+    $('.carousel').carousel({
+    })
+
+    $('#myCollapsible').collapse({
+        toggle: false
+    })
+</script>
+<script>
+    particlesJS("particles-js", {"particles":{"number":{"value":139,"density":{"enable":true,"value_area":800}},"color":{"value":"#fff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.3447335930860874,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":8.017060304327615,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":false,"distance":500,"color":"#ffffff","opacity":0.4,"width":2},"move":{"enable":true,"speed":1.603412060865523,"direction":"bottom","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}}, "retina_detect":true});var count_particles, stats, update; stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+
+    //modal 
+    console.log("s");
+    // $(document).ready(function() {
+    //     console.log("started")
+    //     $("#myModal").modal({show: true});
+    //     $('#myModal').on('shown.bs.modal', function () {
+    //     $('#myInput').trigger('focus')
+    //     })
+    //     $('#myModal').modal('show');
+    // });
+</script>
+<script>
+    console.log("s");
+    $(document).ready(function() {
+        console.log("started")
+            $("#myModal").modal({show: true});
+            $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    });
+</script>

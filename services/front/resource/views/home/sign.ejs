@@ -1,0 +1,74 @@
+<div class="p-3 mt-5 container " >
+    <div class="row  justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-default">
+                <div class="card-header"><h5>ثبت نام در تور <h5 style="font-weight: bold;"><%= trip.title %> </h5> </h5></div>
+                <form class="form-horizontal" method="GET" action="" novalidate>
+                    <div class="form-group p-3 text-dark font-weight-bold ">
+                        <label for="" class="control-label p-2" >مبلغ </label> : <lable class="  text- p-1"><%= newPrice %> تومان</lable>
+                        <br>
+                        <label for="" class="control-label p-2">نام آژانس </label> : <lable  class=" text- p-1"><%= trip.tourName %></lable>
+                        <br>
+                        <label for="" class="control-label p-2">تاریخ حرکت</label> : <lable  class=" text-  p-1"><%= trip.prOpeningDate%></lable>
+                        <br>
+                        <div class="form-group">
+                            <label for="count" class="control-label p-2" >تعداد بلیط </label> :
+                            <input id="count" type="number" class="w-25 ml-5 border-secondary font-weight-bold shadow form-group" style="width: 10px" name="count" value="<%= req.query.count %>" required>
+                            <a href="/"> <button class="bttn-bordered bttn-sm bttn-success">ثبت تعداد</button></a>
+                        </div>
+                    </div>
+                </form>
+                <p style="margin: 20px; font-weight: bold;">
+                    * لطفا اعداد را به انگلیسی وارد کنید
+                </p>
+                <%# will output the numbers 1-10 %>
+                <div class="card-body">
+                        <form class="form-horizontal" method="POST" action="" novalidate>
+                        <%- include(viewPath('layouts/error-messages')) -%>
+                            <% for (var i =1; i <= count;  i++ ) { %>
+                        <div class="form-group">
+                            <label for="fullName" class="control-label">نام و نام خانوادگی</label>
+                            <input id="fullName" type="text" class="form-control" name="fullName[]" value="<%=  old('fullName') %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mid" class="control-label">کدملی</label>
+                            <input id="mid" type="number" class="form-control" name="mid[]" value="<%=  old('mid') %>" required minlength="10" maxlength="10" >
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber" class="control-label">تلفن همراه</label>
+                            <input id="phoneNumber" type="number" class="form-control" name="phoneNumber[]" value="<%=  old('phoneNumber') %>" required maxlength="11" minlength="11" >
+                        </div>
+                        <br/>
+                            <hr class="bg-dark">
+                            <% } %>
+                        <p style="margin-bottom: 20px; font-weight: bold;">
+                            * بلیط برای اولین شماره وارد شده در فرم ارسال میشود
+                        </p>
+                        <div class="form-group">
+                            <button type="submit" class="bttn-simple bttn-md bttn-success">پرداخت</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+
+
+
+
+
+

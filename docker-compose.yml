@@ -1,0 +1,158 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: lgPlCQDFlA
+      MONGO_INITDB_DATABASE: lastour
+    volumes:
+      - ./volumes/mongo-data:/data/db
+    command: mongod --port 27018
+    ports:
+      - "0.0.0.0:27018:27018"
+  postgres:
+    image: "postgres:11"
+    container_name: "tour_postgres"
+    environment:
+      - POSTGRES_USER=tourche
+      - POSTGRES_PASSWORD=pwd0123456789
+      - POSTGRES_DB=tourche
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./volumes/postgres-data:/var/lib/postgresql/data
+    restart: "always"
+  # mysql:
+  #   container_name: mysql-tour
+  #   image: mariadb
+  #   command: --max-allowed-packet=64MB
+  #   restart: always
+  #   volumes:
+  #     - ./volumes/mysql-data:/var/lib/mysql
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=Rockafellers_1378
+  #     # - MYSQL_DATABASE=matomo
+  #     # - MYSQL_USER=matomo
+  #     # - MYSQL_PASSWORD=Rockafellers_1378
+  #     - MYSQL_DATABASE=ghost
+  #     - MYSQL_USER=ghost
+  #     - MYSQL_PASSWORD=Rockafellers_1378
+  front:
+    container_name: tour_front
+    build: ./services/front/
+    restart: always
+    env_file: ./services/front/.env
+    ports:
+      - "127.0.0.1:4200:3001"
+    links:
+      - mongo
+  api:
+    container_name: tour_api
+    build: ./services/api/
+    env_file: ./services/api/.env
+    restart: always
+    ports:
+      - "127.0.0.1:2121:2121"
+    links:
+      - "postgres"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./volumes/logs/api:/usr/src/app/logs
+      - ./volumes/logs/api:/root/.npm/_logs
+  meta:
+    image: metabase/metabase
+    environment:
+      - MB_SITE_URL=http://localhost:4242
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=tourche
+      - MB_DB_USER=tourche
+      - MB_DB_PASS=pwd0123456789
+      - MB_DB_HOST=tour_postgres
+    container_name: meta
+    ports: 
+    - "127.0.0.1:4242:3000"
+  admin:
+    container_name: admin
+    build: ./services/admin/
+    env_file: ./services/admin/.env
+    restart: always
+    ports:
+    - "5252:5252"
+    links:
+    - postgres
+    - mongo
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./volumes/logs/admin:/usr/src/app/logs
+      - ./volumes/admin-data:/usr/src/app/dist/public/img/uploads
+  ghost:
+    image: ghost:latest
+    container_name: ghost-tour
+    volumes:
+      - ./volumes/ghost/content:/var/lib/ghost/content:z
+    ports:
+    - "3001:2368"
+    environment: # this section can be commented to start in dev mode by default
+      url: "http://blog.3tour.ir"
+      database__client: postgres
+      database__connection__host: tour_postgres
+      database__connection__user: tourche
+      database__connection__password: pwd0123456789
+      database__connection__database: ghost
+      mail__from: hordimad21@gmail.com 
+      mail__transport: SMTP
+      mail__options__service: Gmail
+      mail__options__port: 465
+      mail__options__host: smtp.gmail.com
+      mail__options__secureConnection: 'true'
+      mail__options__auth__user: hordimad21@gmail.com
+      mail__options__auth__pass: hamidmoradi21
+    restart: always
+    links:
+      - postgres
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.ghost.rule=Host(`blog.3tour.ir`)"
+  # zipkin:
+  #   image: openzipkin/zipkin
+  #   container_name: zipkin
+  #   # Environment settings are defined here https://github.com/openzipkin/zipkin/blob/master/zipkin-server/README.md#environment-variables
+  #   environment:
+  #     - STORAGE_TYPE=mysql
+  #     # Point the zipkin at the storage backend
+  #     - MYSQL_HOST=mysql
+  #     # Uncomment to enable scribe
+  #     # - SCRIBE_ENABLED=true
+  #     # Uncomment to enable self-tracing
+  #     # - SELF_TRACING_ENABLED=true
+  #     # Uncomment to enable debug logging
+  #     # - JAVA_OPTS=-Dlogging.level.zipkin2=DEBUG
+  #   ports:
+  #     # Port used for the Zipkin UI and HTTP Api
+  #     - 9411:9411
+  #     # Uncomment if you set SCRIBE_ENABLED=true
+  #     # - 9410:9410
+#   matomo:
+#     container_name: matomo
+#     image: matomo:fpm-alpine
+#     restart: always
+#     links:
+#       - mysql
+#     ports:
+#     - "9000:9000"
+#     volumes:
+# #      - ./config:/var/www/html/config:rw
+# #      - ./logs:/var/www/html/logs
+#       - ./matomo-data:/var/www/html
+#     environment:
+#       - MATOMO_DATABASE_ADAPTER=mysql
+#       - MATOMO_DATABASE_TABLES_PREFIX=matomo_
+#       - MATOMO_DATABASE_HOST=mysql
+#       - MATOMO_DATABASE_USERNAME=matomo
+#       - MATOMO_DATABASE_DBNAME=matomo
+#       - MATOMO_DATABASE_PASSWORD=Rockafellers_1378
+

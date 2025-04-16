@@ -1,0 +1,22 @@
+debug = true
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.traefik]
+  address = ":8080"
+    # [entryPoints.traefik.http.middlewares.test-auth.basicauth]
+    # users = ["test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"]
+[http.middlewares.auth.basicauth]
+  users = ["test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"]
+[providers.docker]
+[api]
+  dashboard = true
+[log]
+  level = "DEBUG"
+  filePath = "./traefik.log"
+[tracing]
+  [tracing.zipkin]
+[metrics]
+  [metrics.prometheus]
